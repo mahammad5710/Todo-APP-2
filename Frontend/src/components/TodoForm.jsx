@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-const TodoForm = () => {
+const TodoForm = ({onTodo}) => {
   const taskInput = useRef();
   const dateInput = useRef();
 
@@ -10,7 +10,7 @@ const TodoForm = () => {
     const date = dateInput.current.value;
     taskInput.current.value = "";
     dateInput.current.value = "";
-    console.log({ task, date });
+    onTodo(task,date);
   };
 
   return (
