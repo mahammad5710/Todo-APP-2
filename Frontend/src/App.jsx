@@ -17,11 +17,18 @@ function App() {
     const updatedTodos=todos.filter((todo)=>todo.id !== id);
     setTodos(updatedTodos);
   }
+  const toggleTodo=(id)=>{
+    setTodos((prevTodos)=>(
+      prevTodos.map(todo=>(
+        todo.id === id ? {...todo,completed:!todo.completed}:todo
+      ))
+    ));
+  }
   return (
     <div className="min-h-screen flex flex-col items-center bg-gray-50">
       <AppName />
       <TodoForm onTodo={addTodo}/>
-      <TodoItems todos={todos} onDelete={deleteTodo}/>
+      <TodoItems todos={todos} onDelete={deleteTodo} onToggleTodo={toggleTodo}/>
     </div>
   );
 }
